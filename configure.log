@@ -1,4 +1,4 @@
-configure: cmake ../stk-code -DCMAKE_BUILD_TYPE=Release -DBUILD_RECORDER=OFF -DUSE_WIIUSE=OFF -DUSE_SQLITE3=OFF -DNO_SHADERC=ON -DCMAKE_C_FLAGS=-sUSE_SDL=2 -DCMAKE_CXX_FLAGS=-sUSE_SDL=2 -DSDL2_INCLUDE_DIR=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/upstream/emscripten/cache/sysroot/include/SDL2 -DSDL2_LIBRARY=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libSDL2.a -DCMAKE_TOOLCHAIN_FILE=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/node/24.19.0_64bit/bin/node
+configure: cmake ../stk-code -DCMAKE_BUILD_TYPE=Release -DBUILD_RECORDER=OFF -DUSE_WIIUSE=OFF -DUSE_SQLITE3=OFF -DNO_SHADERC=ON -DCMAKE_C_FLAGS=-sUSE_SDL=2 -DCMAKE_CXX_FLAGS=-sUSE_SDL=2 -DSDL2_INCLUDE_DIR=/home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cache/sysroot/include/SDL2 -DSDL2_LIBRARY=/home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libSDL2.a -DJPEG_INCLUDE_DIR=/home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cache/sysroot/include -DJPEG_LIBRARY=/home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libjpeg.a -DCMAKE_TOOLCHAIN_FILE=/home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/node/24.19.0_64bit/bin/node
 -- Found PkgConfig: /usr/bin/pkg-config (found version "1.8.1")
 -- Looking for fcntl
 -- Looking for fcntl - found
@@ -25,13 +25,23 @@ CMake Warning at lib/graphics_engine/CMakeLists.txt:36 (message):
   https://github.com/ARM-software/astc-encoder for details
 
 
-CMake Error at /usr/local/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake:233 (message):
-  Could NOT find JPEG (missing: JPEG_LIBRARY JPEG_INCLUDE_DIR)
-Call Stack (most recent call first):
-  /usr/local/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake:603 (_FPHSA_FAILURE_MESSAGE)
-  /usr/local/share/cmake-3.31/Modules/FindJPEG.cmake:107 (find_package_handle_standard_args)
-  CMakeLists.txt:293 (find_package)
+-- Found JPEG: /home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libjpeg.a (found version "90")
+-- System libmcpp not found, use the bundled one.
+-- Use system SDL2: /home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libSDL2.a
+-- Found ZLIB: /home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libz.a (found version "1.2.13")
+-- Found PNG: /home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libpng.a (found version "1.6.39")
+-- Configuring angelscript 2.38.0
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Checking for module 'vorbisfile'
+--   Package 'vorbisfile', required by 'virtual:world', not found
+-- Checking for module 'freetype2'
+--   Package 'freetype2', required by 'virtual:world', not found
+CMake Error at CMakeLists.txt:478 (message):
+  Freetype not found.  Freetype is required to display characters in
+  SuperTuxKart.
 
 
 -- Configuring incomplete, errors occurred!
-emcmake: error: 'cmake ../stk-code -DCMAKE_BUILD_TYPE=Release -DBUILD_RECORDER=OFF -DUSE_WIIUSE=OFF -DUSE_SQLITE3=OFF -DNO_SHADERC=ON -DCMAKE_C_FLAGS=-sUSE_SDL=2 -DCMAKE_CXX_FLAGS=-sUSE_SDL=2 -DSDL2_INCLUDE_DIR=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/upstream/emscripten/cache/sysroot/include/SDL2 -DSDL2_LIBRARY=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libSDL2.a -DCMAKE_TOOLCHAIN_FILE=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/node/24.19.0_64bit/bin/node' failed (returned 1)
+emcmake: error: 'cmake ../stk-code -DCMAKE_BUILD_TYPE=Release -DBUILD_RECORDER=OFF -DUSE_WIIUSE=OFF -DUSE_SQLITE3=OFF -DNO_SHADERC=ON -DCMAKE_C_FLAGS=-sUSE_SDL=2 -DCMAKE_CXX_FLAGS=-sUSE_SDL=2 -DSDL2_INCLUDE_DIR=/home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cache/sysroot/include/SDL2 -DSDL2_LIBRARY=/home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libSDL2.a -DJPEG_INCLUDE_DIR=/home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cache/sysroot/include -DJPEG_LIBRARY=/home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libjpeg.a -DCMAKE_TOOLCHAIN_FILE=/home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/runner/work/_temp/286bf4b8-4a39-401c-8083-f843886218f2/emsdk-main/node/24.19.0_64bit/bin/node' failed (returned 1)

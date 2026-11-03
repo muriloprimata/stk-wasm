@@ -14,15 +14,38 @@ jobs:
       - name: Clonar STK
         run: git clone --depth 1 https://github.com/supertuxkart/stk-code.git
 
-      - name: Ver como o STK procura SDL2
-        run: |
-          grep -rn "SDL2" stk-code/CMakeLists.txt stk-code/lib/graphics_engine/CMakeLists.txt > sdl2-grep.log || true
-
       - name: Compilar ports do Emscripten
         run: |
           for p in libjpeg sdl2 zlib libpng freetype harfbuzz ogg vorbis bullet; do
             embuilder build $p || echo "falhou: $p" >> ports.log
           done
+          SYSROOT="$(em-config CACHE)/sysroot"
+          ls "$SYSROOT/lib/wasm32-emscripten" > libs.log
+          ls "$SYSROOT/include" >> libs.log
+          grep -n -E "pkg_check_modules|find_package|find_library" stk-code/CMakeLists.txt > deps-grep.log || true
+
+      - name: Criar pkg-config falsos
+        run: |
+          SYSROOT="$(em-config CACHE)/sysroot"
+          PCDIR="$HOME/pc"
+          mkdir -p "$PCDIR"
+          mkpc() {
+            cat > "$PCDIR/$1.pc" <<PCEOF
+          Name: $1
+          Description: $1
+          Version: $4
+          Libs: -L$SYSROOT/lib/wasm32-emscripten $2
+          Cflags: -I$SYSROOT/include $3
+          PCEOF
+          }
+          mkpc freetype2 "-lfreetype" "-I$SYSROOT/include/freetype2" 26.0.20
+          mkpc vorbisfile "-lvorbis -logg" "" 1.3.7
+          mkpc vorbis "-lvorbis -logg" "" 1.3.7
+          mkpc ogg "-logg" "" 1.3.5
+          mkpc harfbuzz "-lharfbuzz" "-I$SYSROOT/include/harfbuzz" 8.3.0
+          mkpc libpng "-lpng" "" 1.6.40
+          mkpc zlib "-lz" "" 1.3.1
+          echo "PKG_CONFIG_PATH=$PCDIR" >> "$GITHUB_ENV"
 
       - name: Configurar com emcmake
         continue-on-error: true

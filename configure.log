@@ -1,0 +1,33 @@
+configure: cmake ../stk-code -DCMAKE_BUILD_TYPE=Release -DBUILD_RECORDER=OFF -DUSE_WIIUSE=OFF -DUSE_SQLITE3=OFF -DNO_SHADERC=ON -DCMAKE_TOOLCHAIN_FILE=/home/runner/work/_temp/0e93bfaf-d0ac-4fe6-861d-24220b679394/emsdk-main/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/runner/work/_temp/0e93bfaf-d0ac-4fe6-861d-24220b679394/emsdk-main/node/24.19.0_64bit/bin/node
+-- Found PkgConfig: /usr/bin/pkg-config (found version "1.8.1")
+-- Looking for fcntl
+-- Looking for fcntl - found
+-- Looking for poll
+-- Looking for poll - found
+-- Looking for getaddrinfo
+-- Looking for getaddrinfo - found
+-- Looking for getnameinfo
+-- Looking for getnameinfo - found
+-- Looking for gethostbyname_r
+-- Looking for gethostbyname_r - found
+-- Looking for gethostbyaddr_r
+-- Looking for gethostbyaddr_r - found
+-- Looking for inet_pton
+-- Looking for inet_pton - found
+-- Looking for inet_ntop
+-- Looking for inet_ntop - found
+-- Performing Test HAS_MSGHDR_FLAGS
+-- Performing Test HAS_MSGHDR_FLAGS - Success
+-- Check size of socklen_t
+-- Check size of socklen_t - done
+CMake Warning at lib/graphics_engine/CMakeLists.txt:36 (message):
+  Missing astc-encoder for astc support, visit
+  https://github.com/ARM-software/astc-encoder for details
+
+
+CMake Error at lib/graphics_engine/CMakeLists.txt:46 (message):
+  SDL2 not found.
+
+
+-- Configuring incomplete, errors occurred!
+emcmake: error: 'cmake ../stk-code -DCMAKE_BUILD_TYPE=Release -DBUILD_RECORDER=OFF -DUSE_WIIUSE=OFF -DUSE_SQLITE3=OFF -DNO_SHADERC=ON -DCMAKE_TOOLCHAIN_FILE=/home/runner/work/_temp/0e93bfaf-d0ac-4fe6-861d-24220b679394/emsdk-main/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/runner/work/_temp/0e93bfaf-d0ac-4fe6-861d-24220b679394/emsdk-main/node/24.19.0_64bit/bin/node' failed (returned 1)

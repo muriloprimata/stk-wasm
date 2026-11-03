@@ -11,13 +11,24 @@ jobs:
         with:
           version: 3.1.74
 
-      - name: Clonar STK (sem assets por enquanto)
+      - name: Clonar STK
         run: git clone --depth 1 https://github.com/supertuxkart/stk-code.git
+
+      - name: Ver como o STK procura SDL2
+        run: |
+          grep -rn "SDL2" stk-code/CMakeLists.txt stk-code/lib/graphics_engine/CMakeLists.txt > sdl2-grep.log || true
+
+      - name: Compilar ports do Emscripten
+        run: |
+          for p in sdl2 zlib libpng freetype harfbuzz ogg vorbis bullet; do
+            embuilder build $p || echo "falhou: $p" >> ports.log
+          done
 
       - name: Configurar com emcmake
         continue-on-error: true
         shell: bash
         run: |
+          SYSROOT="$(em-config CACHE)/sysroot"
           mkdir -p build && cd build
           emcmake cmake ../stk-code \
             -DCMAKE_BUILD_TYPE=Release \
@@ -25,6 +36,10 @@ jobs:
             -DUSE_WIIUSE=OFF \
             -DUSE_SQLITE3=OFF \
             -DNO_SHADERC=ON \
+            -DCMAKE_C_FLAGS="-sUSE_SDL=2" \
+            -DCMAKE_CXX_FLAGS="-sUSE_SDL=2" \
+            -DSDL2_INCLUDE_DIR="$SYSROOT/include/SDL2" \
+            -DSDL2_LIBRARY="$SYSROOT/lib/wasm32-emscripten/libSDL2.a" \
             2>&1 | tee ../configure.log
 
       - name: Subir logs

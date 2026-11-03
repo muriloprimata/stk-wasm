@@ -1,4 +1,4 @@
-configure: cmake ../stk-code -DCMAKE_BUILD_TYPE=Release -DBUILD_RECORDER=OFF -DUSE_WIIUSE=OFF -DUSE_SQLITE3=OFF -DNO_SHADERC=ON -DCMAKE_TOOLCHAIN_FILE=/home/runner/work/_temp/0e93bfaf-d0ac-4fe6-861d-24220b679394/emsdk-main/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/runner/work/_temp/0e93bfaf-d0ac-4fe6-861d-24220b679394/emsdk-main/node/24.19.0_64bit/bin/node
+configure: cmake ../stk-code -DCMAKE_BUILD_TYPE=Release -DBUILD_RECORDER=OFF -DUSE_WIIUSE=OFF -DUSE_SQLITE3=OFF -DNO_SHADERC=ON -DCMAKE_C_FLAGS=-sUSE_SDL=2 -DCMAKE_CXX_FLAGS=-sUSE_SDL=2 -DSDL2_INCLUDE_DIR=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/upstream/emscripten/cache/sysroot/include/SDL2 -DSDL2_LIBRARY=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libSDL2.a -DCMAKE_TOOLCHAIN_FILE=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/node/24.19.0_64bit/bin/node
 -- Found PkgConfig: /usr/bin/pkg-config (found version "1.8.1")
 -- Looking for fcntl
 -- Looking for fcntl - found
@@ -25,9 +25,13 @@ CMake Warning at lib/graphics_engine/CMakeLists.txt:36 (message):
   https://github.com/ARM-software/astc-encoder for details
 
 
-CMake Error at lib/graphics_engine/CMakeLists.txt:46 (message):
-  SDL2 not found.
+CMake Error at /usr/local/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake:233 (message):
+  Could NOT find JPEG (missing: JPEG_LIBRARY JPEG_INCLUDE_DIR)
+Call Stack (most recent call first):
+  /usr/local/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake:603 (_FPHSA_FAILURE_MESSAGE)
+  /usr/local/share/cmake-3.31/Modules/FindJPEG.cmake:107 (find_package_handle_standard_args)
+  CMakeLists.txt:293 (find_package)
 
 
 -- Configuring incomplete, errors occurred!
-emcmake: error: 'cmake ../stk-code -DCMAKE_BUILD_TYPE=Release -DBUILD_RECORDER=OFF -DUSE_WIIUSE=OFF -DUSE_SQLITE3=OFF -DNO_SHADERC=ON -DCMAKE_TOOLCHAIN_FILE=/home/runner/work/_temp/0e93bfaf-d0ac-4fe6-861d-24220b679394/emsdk-main/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/runner/work/_temp/0e93bfaf-d0ac-4fe6-861d-24220b679394/emsdk-main/node/24.19.0_64bit/bin/node' failed (returned 1)
+emcmake: error: 'cmake ../stk-code -DCMAKE_BUILD_TYPE=Release -DBUILD_RECORDER=OFF -DUSE_WIIUSE=OFF -DUSE_SQLITE3=OFF -DNO_SHADERC=ON -DCMAKE_C_FLAGS=-sUSE_SDL=2 -DCMAKE_CXX_FLAGS=-sUSE_SDL=2 -DSDL2_INCLUDE_DIR=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/upstream/emscripten/cache/sysroot/include/SDL2 -DSDL2_LIBRARY=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libSDL2.a -DCMAKE_TOOLCHAIN_FILE=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/runner/work/_temp/3f390fc5-f77d-4de7-89f7-1faeba446d90/emsdk-main/node/24.19.0_64bit/bin/node' failed (returned 1)

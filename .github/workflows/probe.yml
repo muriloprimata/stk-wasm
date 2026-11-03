@@ -20,7 +20,7 @@ jobs:
 
       - name: Compilar ports do Emscripten
         run: |
-          for p in sdl2 zlib libpng freetype harfbuzz ogg vorbis bullet; do
+          for p in libjpeg sdl2 zlib libpng freetype harfbuzz ogg vorbis bullet; do
             embuilder build $p || echo "falhou: $p" >> ports.log
           done
 
@@ -40,6 +40,8 @@ jobs:
             -DCMAKE_CXX_FLAGS="-sUSE_SDL=2" \
             -DSDL2_INCLUDE_DIR="$SYSROOT/include/SDL2" \
             -DSDL2_LIBRARY="$SYSROOT/lib/wasm32-emscripten/libSDL2.a" \
+            -DJPEG_INCLUDE_DIR="$SYSROOT/include" \
+            -DJPEG_LIBRARY="$SYSROOT/lib/wasm32-emscripten/libjpeg.a" \
             2>&1 | tee ../configure.log
 
       - name: Subir logs

@@ -1,0 +1,16 @@
+stk-code/CMakeLists.txt:341:    # SDL2
+stk-code/CMakeLists.txt:342:    find_library(SDL2_LIBRARY NAMES SDL2 libSDL2)
+stk-code/CMakeLists.txt:343:    find_path(SDL2_INCLUDEDIR NAMES SDL.h PATH_SUFFIXES SDL2 include/SDL2 include PATHS)
+stk-code/CMakeLists.txt:344:    if (NOT SDL2_LIBRARY OR NOT SDL2_INCLUDEDIR)
+stk-code/CMakeLists.txt:345:        message(FATAL_ERROR "SDL2 not found. "
+stk-code/CMakeLists.txt:346:            "SDL2 is required to handle gamepad in SuperTuxKart.")
+stk-code/CMakeLists.txt:348:        include_directories("${SDL2_INCLUDEDIR}")
+stk-code/CMakeLists.txt:349:        MESSAGE(STATUS "Use system SDL2: ${SDL2_LIBRARY}")
+stk-code/CMakeLists.txt:351:    # DirectFB. Necessary if system SDL2 is built with DirectFB support.
+stk-code/CMakeLists.txt:355:        message(STATUS "Adding DirectFB include directories for DirectFB support in SDL2")
+stk-code/CMakeLists.txt:746:    ${SDL2_LIBRARY}
+stk-code/CMakeLists.txt:817:        ${SDL2_LIBRARY}
+stk-code/lib/graphics_engine/CMakeLists.txt:44:find_path(SDL2_INCLUDEDIR NAMES SDL.h PATH_SUFFIXES SDL2 include/SDL2 include PATHS)
+stk-code/lib/graphics_engine/CMakeLists.txt:45:if (NOT SDL2_INCLUDEDIR)
+stk-code/lib/graphics_engine/CMakeLists.txt:46:    message(FATAL_ERROR "SDL2 not found.")
+stk-code/lib/graphics_engine/CMakeLists.txt:48:    include_directories("${SDL2_INCLUDEDIR}")
